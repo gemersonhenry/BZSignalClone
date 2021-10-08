@@ -10,3 +10,8 @@ export default {
   },
   isSmallDevice: width < 375,
 };
+
+// Custom Values
+
+export const SPACE = 16;
+export const FONT_SIZE = 16;
