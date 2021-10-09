@@ -1,16 +1,21 @@
-import * as React from 'react';
+import React from 'react';
 import { Text, View, StyleSheet, StatusBar, FlatList } from 'react-native';
 import { COMPLETE_CHAT } from '../../APIs/chats.api';
 import ChatMessage from '../../components/ChatMessage';
 import { ChatMessageProps } from '../../components/ChatMessage/ChatMessage';
 import ChatMessageInput from '../../components/ChatMessageInput';
 import { COLORS } from '../../constants/Colors';
+import { useRoute } from '@react-navigation/core';
 
 const myID = 'u1';
 
 interface ChatRoomScreenProps {}
 
 const ChatRoomScreen = (props: ChatRoomScreenProps) => {  
+
+  const route = useRoute();
+
+  console.warn(route.params);
 
   const formattedMessages = COMPLETE_CHAT.messages.map(m => {
     return {

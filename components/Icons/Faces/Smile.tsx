@@ -8,7 +8,7 @@ interface SlileProps {
 
 const SlileIcon = (props: SlileProps) => {
   return (
-    <FontAwesome5 name="smile" size={props.size ?? 24} color="black" />
+    <FontAwesome5 name="smile" size={props.size ?? 24} color="black" style={{}} />
   );
 };
 

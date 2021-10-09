@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, View, Image } from 'react-native';
+import { Text, View, Image, Pressable } from 'react-native';
 
 import { ChatRoomItemStyles as styles } from './ChatRoomItem.styles';
 
@@ -12,7 +12,12 @@ export interface ChatRoomItemProps {
   numberOfNewMessages?: number;
 }
 
-const ChatRoomItem = ({ props }: { props: ChatRoomItemProps }) => {
+interface Props {
+  props: ChatRoomItemProps;
+  onPressEvent?: (item: ChatRoomItemProps) => void;
+}
+
+const ChatRoomItem = ({ props, onPressEvent }: Props) => {
 
   const { imageSrc, hour, lastMessage, name, numberOfNewMessages } = props;
 
@@ -24,8 +29,17 @@ const ChatRoomItem = ({ props }: { props: ChatRoomItemProps }) => {
     )
   }
 
+  const onPress = () => {
+    if (onPressEvent) {
+      onPressEvent(props);
+    }
+  }
+
   return (
-    <View style={styles.container}>
+    <Pressable 
+      onPress={() => onPress()}
+      style={styles.container}
+    >
       <Image
         style={styles.image} 
         source={{ uri: imageSrc }} 
@@ -46,7 +60,7 @@ const ChatRoomItem = ({ props }: { props: ChatRoomItemProps }) => {
           { lastMessage }
         </Text>
       </View>
-    </View>
+    </Pressable>
   );
 };
 
